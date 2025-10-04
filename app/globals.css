@@ -1,0 +1,683 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 255 255 255;
+  --fg: 15 23 42;
+}
+
+.dark {
+  --bg: 2 6 23;
+  --fg: 226 232 240;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--fg));
+  padding-top: 4rem;
+}
+
+/* Fixed header support for all screen sizes */
+.header-fixed {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 9999 !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  will-change: transform !important;
+  -webkit-backface-visibility: hidden !important;
+  backface-visibility: hidden !important;
+}
+
+/* Mobile-specific header positioning overrides */
+@media (max-width: 768px) {
+  .header-fixed {
+    transform: translate3d(0, 0, 0) !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    padding-top: 4rem !important;
+  }
+}
+
+/* ResultModal centering (Ignore header offset) */
+.result-modal-container {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateX(0) translateY(0) !important;
+}
+
+/* Smooth transitions for theme and interactions */
+* {
+  transition-property:
+    background-color, color, border-color, fill, stroke, opacity, box-shadow,
+    transform, filter;
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Custom scrollbar styles */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(148 163 184) rgb(241 245 249);
+}
+
+.dark .custom-scrollbar {
+  scrollbar-color: rgb(71 85 105) rgb(30 41 59);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgb(241 245 249);
+  border-radius: 3px;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: rgb(30 41 59);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgb(148 163 184);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgb(100 116 139);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgb(71 85 105);
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgb(51 65 85);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Centering for X and O symbols */
+.game-symbol {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  line-height: 1 !important;
+  font-feature-settings: 'tnum' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Confetti / party effects for fullscreen ResultModal */
+.confetti-container-fullscreen {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.confetti-big {
+  position: absolute;
+  width: 14px;
+  height: 18px;
+  border-radius: 3px;
+  opacity: 0.9;
+  transform-origin: center;
+  animation:
+    confetti-big-fall 1400ms ease-out forwards,
+    confetti-big-rotate 1400ms ease-in-out forwards;
+}
+
+@keyframes confetti-big-fall {
+  0% {
+    transform: translateY(-50px) translateX(0) rotate(0deg) scale(1.2);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateY(400px) translateX(200px) rotate(180deg) scale(1);
+  }
+  100% {
+    transform: translateY(800px) translateX(400px) rotate(360deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes confetti-big-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Color variants for bigger confetti */
+.confetti-big-0 {
+  background: #f97316;
+  left: 5%;
+  top: -10%;
+  animation-delay: 0ms;
+}
+.confetti-big-1 {
+  background: #f43f5e;
+  left: 15%;
+  top: -15%;
+  animation-delay: 100ms;
+}
+.confetti-big-2 {
+  background: #7c3aed;
+  left: 25%;
+  top: -5%;
+  animation-delay: 200ms;
+}
+.confetti-big-3 {
+  background: #06b6d4;
+  left: 35%;
+  top: -20%;
+  animation-delay: 300ms;
+}
+.confetti-big-4 {
+  background: #10b981;
+  left: 50%;
+  top: -8%;
+  animation-delay: 400ms;
+}
+.confetti-big-5 {
+  background: #f59e0b;
+  left: 65%;
+  top: -12%;
+  animation-delay: 500ms;
+}
+.confetti-big-6 {
+  background: #ec4899;
+  left: 75%;
+  top: -18%;
+  animation-delay: 600ms;
+}
+.confetti-big-7 {
+  background: #8b5cf6;
+  left: 90%;
+  top: -6%;
+  animation-delay: 700ms;
+}
+
+/* Draw particles */
+.draw-particles-container {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.draw-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: draw-float 2000ms ease-in-out infinite;
+}
+
+@keyframes draw-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-30px) scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* Subtle draw particle variants */
+.draw-particle-0 {
+  background: #94a3b8;
+  left: 15%;
+  top: 60%;
+  animation-delay: 0ms;
+}
+.draw-particle-1 {
+  background: #cbd5e1;
+  left: 30%;
+  top: 50%;
+  animation-delay: 500ms;
+}
+.draw-particle-2 {
+  background: #f1c40f;
+  left: 45%;
+  top: 65%;
+  animation-delay: 1000ms;
+}
+.draw-particle-3 {
+  background: #e2e8f0;
+  left: 60%;
+  top: 55%;
+  animation-delay: 1500ms;
+}
+.draw-particle-4 {
+  background: #a78bfa;
+  left: 75%;
+  top: 58%;
+  animation-delay: 2000ms;
+}
+.draw-particle-5 {
+  background: #fca5a5;
+  left: 85%;
+  top: 62%;
+  animation-delay: 2500ms;
+}
+
+/* Fireworks particles for winner celebrations */
+.fireworks-container {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.firework {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 1;
+  animation: firework-burst 1200ms ease-out forwards;
+}
+
+@keyframes firework-burst {
+  0% {
+    transform: scale(0) translate(0, 0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5)
+      translate(var(--burst-x, 100px), var(--burst-y, -100px));
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(0.5)
+      translate(
+        calc(var(--burst-x, 100px) * 2),
+        calc(var(--burst-y, -100px) * 2)
+      );
+    opacity: 0;
+  }
+}
+
+/* Firework variants with different burst patterns */
+.firework-0 {
+  background: #ff6b6b;
+  left: 20%;
+  top: 50%;
+  --burst-x: 120px;
+  --burst-y: -80px;
+  animation-delay: 200ms;
+}
+.firework-1 {
+  background: #4ecdc4;
+  left: 80%;
+  top: 40%;
+  --burst-x: -100px;
+  --burst-y: -120px;
+  animation-delay: 400ms;
+}
+.firework-2 {
+  background: #45b7d1;
+  left: 60%;
+  top: 30%;
+  --burst-x: 80px;
+  --burst-y: -150px;
+  animation-delay: 600ms;
+}
+.firework-3 {
+  background: #f9ca24;
+  left: 40%;
+  top: 70%;
+  --burst-x: -120px;
+  --burst-y: -60px;
+  animation-delay: 800ms;
+}
+.firework-4 {
+  background: #6c5ce7;
+  left: 70%;
+  top: 60%;
+  --burst-x: 140px;
+  --burst-y: -100px;
+  animation-delay: 1000ms;
+}
+
+/* Sparkle effects */
+.sparkles-container {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle-twinkle 1500ms ease-in-out infinite;
+}
+
+@keyframes sparkle-twinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5) rotate(180deg);
+  }
+}
+
+/* Sparkle variants */
+.sparkle-0 {
+  background: #ffd700;
+  left: 25%;
+  top: 25%;
+  animation-delay: 0ms;
+}
+.sparkle-1 {
+  background: #ff69b4;
+  left: 75%;
+  top: 35%;
+  animation-delay: 300ms;
+}
+.sparkle-2 {
+  background: #00ced1;
+  left: 50%;
+  top: 20%;
+  animation-delay: 600ms;
+}
+
+/* Pulsing glow animations for text */
+@keyframes pulse-glow-indigo {
+  0%,
+  100% {
+    filter: brightness(1.2) saturate(1.3)
+      drop-shadow(0 0 20px rgba(99, 102, 241, 0.8));
+  }
+  50% {
+    filter: brightness(1.4) saturate(1.5)
+      drop-shadow(0 0 40px rgba(99, 102, 241, 1));
+  }
+}
+
+@keyframes pulse-glow-rose {
+  0%,
+  100% {
+    filter: brightness(1.2) saturate(1.3)
+      drop-shadow(0 0 20px rgba(244, 63, 94, 0.8));
+  }
+  50% {
+    filter: brightness(1.4) saturate(1.5)
+      drop-shadow(0 0 40px rgba(244, 63, 94, 1));
+  }
+}
+
+@keyframes pulse-glow-amber {
+  0%,
+  100% {
+    filter: brightness(1.1) saturate(1.2)
+      drop-shadow(0 0 20px rgba(245, 158, 11, 0.8));
+  }
+  50% {
+    filter: brightness(1.3) saturate(1.4)
+      drop-shadow(0 0 35px rgba(245, 158, 11, 1));
+  }
+}
+
+@keyframes pulse-glow-cyan {
+  0%,
+  100% {
+    filter: brightness(1.3) saturate(1.4)
+      drop-shadow(0 0 20px rgba(34, 211, 238, 0.8));
+  }
+  50% {
+    filter: brightness(1.5) saturate(1.6)
+      drop-shadow(0 0 40px rgba(34, 211, 238, 1));
+  }
+}
+
+.animate-pulse-glow-indigo {
+  animation: pulse-glow-indigo 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow-rose {
+  animation: pulse-glow-rose 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow-amber {
+  animation: pulse-glow-amber 2s ease-in-out infinite;
+}
+
+.animate-pulse-glow-cyan {
+  animation: pulse-glow-cyan 2s ease-in-out infinite;
+}
+
+/* Screen shake effect for winner celebration */
+@keyframes screen-shake {
+  0% {
+    transform: translate(0, 0);
+  }
+  10% {
+    transform: translate(-2px, -1px);
+  }
+  20% {
+    transform: translate(2px, 1px);
+  }
+  30% {
+    transform: translate(-1px, 2px);
+  }
+  40% {
+    transform: translate(1px, -2px);
+  }
+  50% {
+    transform: translate(-2px, 1px);
+  }
+  60% {
+    transform: translate(2px, -1px);
+  }
+  70% {
+    transform: translate(-1px, -2px);
+  }
+  80% {
+    transform: translate(1px, 2px);
+  }
+  90% {
+    transform: translate(-1px, -1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.animate-screen-shake {
+  animation: screen-shake 0.5s ease-in-out 2;
+}
+
+/* WelcomeModal (Glitch button effects) */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+.glitch-text::before {
+  animation: glitch-anim-1 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  color: #0ff;
+  z-index: -1;
+}
+
+.glitch-text::after {
+  animation: glitch-anim-2 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  color: #f0f;
+  z-index: -2;
+}
+
+/* Glitch animation keyframes */
+@keyframes glitch-anim-1 {
+  0% {
+    opacity: 0;
+    transform: translate(0);
+  }
+  20% {
+    opacity: 0.8;
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    opacity: 0.8;
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translate(2px, 2px);
+  }
+  80% {
+    opacity: 0.8;
+    transform: translate(2px, -2px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+}
+
+@keyframes glitch-anim-2 {
+  0% {
+    opacity: 0;
+    transform: translate(0);
+  }
+  20% {
+    opacity: 0.7;
+    transform: translate(2px, -2px);
+  }
+  40% {
+    opacity: 0.7;
+    transform: translate(2px, 2px);
+  }
+  60% {
+    opacity: 0.7;
+    transform: translate(-2px, -2px);
+  }
+  80% {
+    opacity: 0.7;
+    transform: translate(-2px, 2px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0);
+  }
+}
+
+/* Glitch layers for button hover effect */
+.glitch-layer-1 {
+  animation: glitch-layer-1 2s infinite;
+}
+
+.glitch-layer-2 {
+  animation: glitch-layer-2 2.5s infinite;
+}
+
+@keyframes glitch-layer-1 {
+  0%,
+  90%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  91% {
+    transform: translate(-2px, -2px);
+    opacity: 0.7;
+  }
+  93% {
+    transform: translate(2px, 2px);
+    opacity: 0.7;
+  }
+  95% {
+    transform: translate(-2px, 2px);
+    opacity: 0.7;
+  }
+}
+
+@keyframes glitch-layer-2 {
+  0%,
+  85%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  86% {
+    transform: translate(2px, -2px);
+    opacity: 0.5;
+  }
+  88% {
+    transform: translate(-2px, 2px);
+    opacity: 0.5;
+  }
+  90% {
+    transform: translate(2px, 2px);
+    opacity: 0.5;
+  }
+}
+
+/* Sparkle and glow effects for modal */
+.sparkles-container .sparkle {
+  filter: drop-shadow(0 0 4px currentColor);
+}
