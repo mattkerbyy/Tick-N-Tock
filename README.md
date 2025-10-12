@@ -1,6 +1,6 @@
 # 🎮 Tick N Tock - Classic Tic-Tac-Toe Game Reimagined
 
-Welcome to **Tick N Tock!** A compact, nostalgic take on the classic Tic‑Tac‑Toe game built with **Next.js**, **Tailwind CSS**, and **Shadcn UI**.
+Welcome to **Tick N Tock!** A compact, nostalgic take on the classic Tic‑Tac‑Toe game built with **Next.js**, **Tailwind CSS**, **Shadcn UI**, and **Framer Motion**.
 
 ## About
 
