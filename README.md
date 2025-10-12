@@ -1,10 +1,10 @@
 # 🎮 Tick N Tock - Classic Tic-Tac-Toe Game Reimagined
 
-Welcome to Tick N Tock! A compact, nostalgic take on the classic Tic‑Tac‑Toe game built with **Next.js** and **Tailwind CSS**.
+Welcome to **Tick N Tock!** A compact, nostalgic take on the classic Tic‑Tac‑Toe game built with **Next.js**, **Tailwind CSS**, and **Shadcn UI**.
 
 ## About
 
-Tick N Tock is a compact web game project I built to sharpen my modern front-end skills while delivering a polished, responsive, and accessible experience. It’s implemented with Next.js + TypeScript, styled using Tailwind CSS, animated with Framer Motion, and enhanced by a lightweight WebAudio helper for in-browser sound effects. Additionally, it was an opportunity to learn new techniques for improving SEO, including optimizing metadata, structuring content, and ensuring clean, crawl-friendly code.
+Tick N Tock is a compact web game project I built to sharpen my modern front-end skills while delivering a polished, responsive, and accessible experience. It’s implemented with Next.js + TypeScript, styled using Tailwind CSS and Shadcn UI, animated with Framer Motion, and enhanced by a lightweight WebAudio helper for in-browser sound effects. Additionally, it was an opportunity to learn new techniques for improving SEO, including optimizing metadata, structuring content, and ensuring clean, crawl-friendly code.
 
 ## Features
 
@@ -49,7 +49,7 @@ npm run dev
 ## Project Structure (high level)
 
 - `app/` — Next.js App Router pages and layout
-- `components/` — React UI components (Board, Square, GameControls, Footer, etc.)
+- `components/` — UI components (Board, Square, GameControls, Footer, etc.)
 - `public/` — Static assets (icons, opengraph image)
 - `lib/` — Pure helper modules (e.g. `winner.ts`, `coords.ts`)
 - `hooks/` — Custom React hooks (sound helpers, persisted state)
