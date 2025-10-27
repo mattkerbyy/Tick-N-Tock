@@ -6,6 +6,12 @@ Welcome to **Tick N Tock!** A compact, nostalgic take on the classic Tic‑Tac�
 
 Tick N Tock is a compact web game project I built to sharpen my modern front-end skills while delivering a polished, responsive, and accessible experience. It’s implemented with Next.js, styled using Tailwind CSS and Shadcn UI, animated with Framer Motion, and enhanced by a lightweight WebAudio helper for in-browser sound effects. Additionally, it was an opportunity to learn new techniques for improving SEO, including optimizing metadata, structuring content, and ensuring clean, crawl-friendly code.
 
+## Preview
+
+![Web preview 1](front-end/public/images/assets-preview/web-preview.png)
+
+![Web preview 2](front-end/public/images/assets-preview/web-preview-2.png)
+
 ## Features
 
 - Playable Tic-Tac-Toe (X vs O)
