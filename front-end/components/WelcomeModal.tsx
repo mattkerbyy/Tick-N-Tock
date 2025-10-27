@@ -113,7 +113,7 @@ export default function WelcomeModal({ open, onClose }: WelcomeModalProps) {
               delay: isExiting ? 0 : 0.1,
               times: isExiting ? undefined : [0, 0.6, 1],
             }}
-            className="font-pixel text-4xl sm:text-6xl lg:text-8xl font-bold mb-6 tracking-wider drop-shadow-2xl text-cyan-400 drop-shadow-[0_0_40px_rgba(34,211,238,1)] animate-pulse-glow-cyan"
+            className="font-pixel text-4xl sm:text-6xl lg:text-8xl font-bold mb-6 tracking-wider text-cyan-400 drop-shadow-[0_0_40px_rgba(34,211,238,1)] animate-pulse-glow-cyan"
             style={{
               filter: 'brightness(1.3) saturate(1.4)',
               textShadow:
