@@ -140,7 +140,7 @@ export function useGameSounds() {
   const createDayThemeSound = useCallback(() => {
     // Day mode: Bright, ascending chime
     const audioContext = getAudioContext()
-    const frequencies = [523.25, 659.25, 783.99] // C5, E5, G5 - major chord
+    const frequencies = [523.25, 659.25, 783.99] // C5, E5, G5 - Major chord
 
     frequencies.forEach((freq, index) => {
       setTimeout(() => {
@@ -152,7 +152,7 @@ export function useGameSounds() {
   const createNightThemeSound = useCallback(() => {
     // Night mode: Deeper, descending chime
     const audioContext = getAudioContext()
-    const frequencies = [523.25, 415.3, 349.23] // C5, G#4, F4 - minor chord
+    const frequencies = [523.25, 415.3, 349.23] // C5, G#4, F4 - Minor chord
 
     frequencies.forEach((freq, index) => {
       setTimeout(() => {
