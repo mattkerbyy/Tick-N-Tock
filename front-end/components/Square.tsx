@@ -37,6 +37,8 @@ export default function Square({
       type="button"
       disabled={disabled}
       aria-disabled={disabled}
+      aria-label={`Cell ${index + 1}${value ? `, ${value}` : ', empty'}`}
+      aria-selected={focused}
       onClick={onClick}
       onPointerDown={(e: React.PointerEvent) => {
         if (e.pointerType) {

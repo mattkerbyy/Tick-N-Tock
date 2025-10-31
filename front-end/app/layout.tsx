@@ -99,8 +99,8 @@ export default function RootLayout({
           content="#020617"
           media="(prefers-color-scheme: dark)"
         />
-          <meta name="msapplication-TileColor" content="#020617" />
-          <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-TileColor" content="#020617" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
@@ -126,7 +126,7 @@ export default function RootLayout({
           href="/images/apple-touch-120.png"
         />
 
-        {/* Structured Data for SEO */}
+        {/* Structured data for SEO */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

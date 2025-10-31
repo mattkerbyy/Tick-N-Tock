@@ -7,6 +7,7 @@ type GameControlsProps = {
   onReset: () => void
   gameStatus: string
   isGameOver: boolean
+  loading?: boolean
 }
 
 export default function GameControls({
@@ -14,8 +15,25 @@ export default function GameControls({
   onReset,
   gameStatus,
   isGameOver,
+  loading = false,
 }: GameControlsProps) {
   const [isHovered, setIsHovered] = useState(false)
+
+  // Render skeleton when loading
+  if (loading) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="flex items-center justify-between w-full mb-1 xs:mb-1.5 sm:mb-2 px-3 xs:px-4 sm:px-6 md:px-8"
+      >
+        <div className="h-8 w-32 bg-slate-200 dark:bg-slate-700 rounded animate-pulse" />
+        <div className="h-10 w-20 bg-slate-200 dark:bg-slate-700 rounded animate-pulse" />
+      </motion.div>
+    )
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}

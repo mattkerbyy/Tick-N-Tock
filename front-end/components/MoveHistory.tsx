@@ -10,13 +10,40 @@ type HistoryEntry = {
 type MoveHistoryProps = {
   history: Array<HistoryEntry>
   currentMove: number
+  loading?: boolean
   // onJump is intentionally omitted to make the history read-only
 }
 
 export default function MoveHistory({
   history,
   currentMove,
+  loading = false,
 }: MoveHistoryProps) {
+  // If loading, render skeleton placeholders
+  if (loading) {
+    return (
+      <motion.div
+        initial={{ x: 50, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.3, delay: 0.2 }}
+        className="w-full mx-auto px-3 sm:px-4"
+      >
+        <div className="bg-white dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 p-3 sm:p-4 shadow-sm pointer-events-none">
+          <div className="h-4 w-36 bg-slate-200 dark:bg-slate-700 rounded mb-3 animate-pulse" />
+
+          <div className="space-y-2">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <div
+                key={`mh-skel-${i}`}
+                className="w-full h-12 rounded-md bg-slate-100 dark:bg-slate-700/50 animate-pulse"
+              />
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    )
+  }
+
   return (
     <motion.div
       initial={{ x: 50, opacity: 0 }}

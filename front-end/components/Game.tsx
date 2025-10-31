@@ -63,8 +63,13 @@ function reducer(state: State, action: Action): State {
   }
 }
 
-export default function Game() {
+type GameProps = {
+  initialLoading?: boolean
+}
+
+export default function Game({ initialLoading = false }: GameProps) {
   const { playSound } = useGameSounds()
+  const boardRef = React.useRef<HTMLDivElement>(null)
 
   const [state, dispatch] = React.useReducer(reducer, {
     history: [{ squares: initialBoard, lastMoveIndex: null }],
@@ -75,6 +80,21 @@ export default function Game() {
   const currentSquares = state.history[state.currentMove].squares
   const result: WinnerResult = calculateWinner(currentSquares)
   const lastPlayedIndex = state.history[state.currentMove].lastMoveIndex
+
+  // Focus game board function to be called from outside (Example: After closing WelcomeModal)
+  React.useEffect(() => {
+    ;(window as any).focusGameBoard = () => {
+      if (boardRef.current) {
+        const firstButton = boardRef.current.querySelector(
+          'button',
+        ) as HTMLButtonElement | null
+        firstButton?.focus()
+      }
+    }
+    return () => {
+      delete (window as any).focusGameBoard
+    }
+  }, [])
 
   const status = result.winner
     ? `Winner: ${result.winner}!`
@@ -129,14 +149,17 @@ export default function Game() {
               onReset={reset}
               gameStatus={status}
               isGameOver={!!result.winner || result.isDraw}
+              loading={initialLoading}
             />
 
             <Board
+              ref={boardRef}
               squares={currentSquares}
               onPlay={handlePlay}
               winningLine={result.line}
               nextPlayer={state.xIsNext ? 'X' : 'O'}
               disabled={!!result.winner || result.isDraw}
+              loading={initialLoading}
               lastPlayedIndex={lastPlayedIndex}
               winner={result.winner}
             />
@@ -147,6 +170,7 @@ export default function Game() {
             <MoveHistory
               history={state.history}
               currentMove={state.currentMove}
+              loading={initialLoading}
             />
           </div>
         </div>
