@@ -11,18 +11,12 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
 # Misc
 .DS_Store
  
-# Local config files and IDE folders
+# Local config files
 .eslintrc.json
 .prettierrc
-.github/
-.vscode/
+
+# Docs
 README-COPILOT.md
