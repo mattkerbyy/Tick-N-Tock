@@ -17,6 +17,3 @@ pnpm-debug.log*
 # Local config files
 .eslintrc.json
 .prettierrc
-
-# Docs
-README-COPILOT.md
