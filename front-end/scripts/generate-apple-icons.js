@@ -1,15 +1,21 @@
+// Generates Apple Touch Icons (120x120, 152x152, 167x167, 180x180)
+// Usage: node scripts/generate-apple-icons.js
 const sharp = require('sharp')
 const fs = require('fs')
 const path = require('path')
 
 const sizes = [120, 152, 167, 180]
-const src = path.resolve(__dirname, '..', 'public', 'images', 'favicon-512.png')
 const outDir = path.resolve(__dirname, '..', 'public', 'images')
+
+// Use public/images/favicon-512.png as the master source image
+const src = path.join(outDir, 'favicon-512.png')
 
 if (!fs.existsSync(src)) {
   console.error('Source image not found:', src)
   process.exit(1)
 }
+
+if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true })
 
 async function run() {
   for (const size of sizes) {
