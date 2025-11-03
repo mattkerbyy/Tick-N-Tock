@@ -1,6 +1,6 @@
 # 🎮 Tick N Tock - Classic Tic-Tac-Toe Game Reimagined
 
-Welcome to **Tick N Tock!** A compact, nostalgic take on the classic Tic‑Tac‑Toe game built with **Next.js**, **Tailwind CSS**, **Shadcn UI**, and **Framer Motion**.
+Welcome to **Tick N Tock**! A compact, nostalgic take on the classic Tic‑Tac‑Toe game built with **Next.js**, **Tailwind CSS**, **Shadcn UI**, and **Framer Motion**.
 
 ## About
 
@@ -26,7 +26,7 @@ Tick N Tock is a compact web game project I built to sharpen my modern front-end
 
 ## Getting Started
 
-To run this project locally:
+**To view the project:**
 
 1. Clone the repository:
 
@@ -51,23 +51,6 @@ npm run dev
 ```
 
 > Recommended: Node.js 18+ for best compatibility with Next.js 14 and newer toolchains.
-
-## Project Structure (high level)
-
-- `app/` — App Router pages and layout
-- `components/` — UI components (Board, Square, GameControls, Footer, etc.)
-- `public/` — Static assets (icons, opengraph image)
-- `lib/` — Pure helper modules (e.g. `winner.ts`, `coords.ts`)
-- `hooks/` — Custom hooks (sound helpers, persisted state)
-- `scripts/` — Build / asset helper scripts (icon generation)
-
-## Developer Notes
-
-- Linting & formatting
-  - ESLint config: `.eslintrc.json`
-  - Prettier config: `.prettierrc`
-- PWA manifest: `public/site.webmanifest`
-- Open Graph: `app/opengraph-image.png`
 
 ## Why I Made This
 
