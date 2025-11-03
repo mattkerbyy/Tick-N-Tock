@@ -26,7 +26,7 @@ Tick N Tock is a compact web game project I built to sharpen my modern front-end
 
 ## Getting Started
 
-To run this project locally:
+**To view the project:**
 
 1. Clone the repository:
 
