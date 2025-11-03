@@ -5,7 +5,7 @@ import Board from './Board'
 import GameControls from './GameControls'
 import MoveHistory from './MoveHistory'
 import ResultModal from './ResultModal'
-import { calculateWinner, type WinnerResult } from '@/lib/winner'
+import { calculateWinner, type WinnerResult } from '../lib/winner'
 import { useGameSounds } from '../hooks/useGameSounds'
 
 type BoardState = Array<'X' | 'O' | null>

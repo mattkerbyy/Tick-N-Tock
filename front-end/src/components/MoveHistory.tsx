@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { indexToCoord } from '@/lib/coords'
+import { indexToCoord } from '../lib/coords'
 
 type HistoryEntry = {
   squares: Array<'X' | 'O' | null>

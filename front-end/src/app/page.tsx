@@ -1,9 +1,9 @@
 'use client'
 import { useState, useEffect } from 'react'
-import Game from '@/components/Game'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import WelcomeModal from '@/components/WelcomeModal'
+import Game from '../components/Game'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import WelcomeModal from '../components/WelcomeModal'
 
 export default function Page() {
   const [showWelcome, setShowWelcome] = useState(false)

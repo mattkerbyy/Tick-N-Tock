@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Press_Start_2P } from 'next/font/google'
 import './globals.css'
-import { Providers } from '@/components/Providers'
+import { Providers } from '../components/Providers'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const pressStart2P = Press_Start_2P({
