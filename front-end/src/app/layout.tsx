@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, Press_Start_2P } from 'next/font/google'
 import './globals.css'
 import { Providers } from '../components/Providers'
+import VercelAnalytics from '../components/VercelAnalytics'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const pressStart2P = Press_Start_2P({
@@ -37,11 +38,11 @@ export const metadata: Metadata = {
     'web game',
     'singleplayer game',
     'multiplayer game',
-    "Matt Kerby Perez",
-    "matt kerby perez",
-    "mattkerbyy",
-    "Kerbytes",
-    "kerbytes",
+    'Matt Kerby Perez',
+    'matt kerby perez',
+    'mattkerbyy',
+    'Kerbytes',
+    'kerbytes',
   ],
   authors: [{ name: 'mattkerbyy' }],
   creator: 'mattkerbyy',
@@ -168,6 +169,7 @@ export default function RootLayout({
         className={`${inter.variable} ${pressStart2P.variable} font-sans bg-slate-50 dark:bg-slate-950 transition-colors duration-300`}
       >
         <Providers>{children}</Providers>
+        <VercelAnalytics />
       </body>
     </html>
   )
