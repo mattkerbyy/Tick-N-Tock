@@ -52,23 +52,6 @@ npm run dev
 
 > Recommended: Node.js 18+ for best compatibility with Next.js 14 and newer toolchains.
 
-## Project Structure (high level)
-
-- `app/` — App Router pages and layout
-- `components/` — UI components (Board, Square, GameControls, Footer, etc.)
-- `public/` — Static assets (icons, opengraph image)
-- `lib/` — Pure helper modules (e.g. `winner.ts`, `coords.ts`)
-- `hooks/` — Custom hooks (sound helpers, persisted state)
-- `scripts/` — Build / asset helper scripts (icon generation)
-
-## Developer Notes
-
-- Linting & formatting
-  - ESLint config: `.eslintrc.json`
-  - Prettier config: `.prettierrc`
-- PWA manifest: `public/site.webmanifest`
-- Open Graph: `app/opengraph-image.png`
-
 ## Why I Made This
 
 I built Tick N Tock to explore creating a polished web game with modern front-end tools (Next.js, Tailwind, Shadcn UI, Framer Motion), with strong attention to animations, keyboard accessibility, sound effects, and progressive enhancement toward an installable PWA.
