@@ -41,7 +41,7 @@ export default function Footer() {
                 </span>
               </div>
               <span className="font-pixel text-xs text-slate-600 dark:text-slate-400">
-                v1.0
+                v1.0.0
               </span>
             </div>
           </motion.div>
