@@ -11,16 +11,67 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
           { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
           { key: 'X-Content-Type-Options', value: 'nosniff' },
-          { key: 'Referrer-Policy', value: 'no-referrer-when-downgrade' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          {
+            key: 'Permissions-Policy',
+            value: 'geolocation=(), microphone=(), camera=()',
+          },
           { key: 'X-XSS-Protection', value: '1; mode=block' },
-          { key: 'Permissions-Policy', value: 'geolocation=(), microphone=()' },
-          { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
+          { key: 'X-DNS-Prefetch-Control', value: 'on' },
+          {
+            key: 'Content-Security-Policy',
+            value:
+              "default-src 'self'; " +
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' " +
+              '*.vercel.com vercel.com ' +
+              'cdn.vercel-insights.com ' +
+              'va.vercel-scripts.com ' +
+              "'unsafe-eval' " +
+              '; ' +
+              "style-src 'self' 'unsafe-inline' " +
+              'fonts.googleapis.com ' +
+              '; ' +
+              "font-src 'self' " +
+              'fonts.gstatic.com ' +
+              'data: ' +
+              '; ' +
+              "img-src 'self' data: https: " +
+              '*.vercel.com ' +
+              '; ' +
+              "connect-src 'self' " +
+              '*.vercel.com vercel.com ' +
+              'cdn.vercel-insights.com ' +
+              'va.vercel-scripts.com ' +
+              '*.google-analytics.com *.analytics.google.com ' +
+              '*.googletagmanager.com ' +
+              'https: wss: ' +
+              '; ' +
+              "frame-src 'self' " +
+              '*.vercel.com vercel.com ' +
+              '*.google.com ' +
+              '*.googletagmanager.com ' +
+              '; ' +
+              "object-src 'none'; " +
+              "media-src 'self'; " +
+              "manifest-src 'self'; " +
+              "worker-src 'self' blob:; " +
+              "child-src 'self'; " +
+              "form-action 'self'; " +
+              "frame-ancestors 'self'; " +
+              "base-uri 'self'; " +
+              'upgrade-insecure-requests; ' +
+              'report-uri https://tick-n-tock.vercel.app/api/csp-report',
+          },
         ],
       },
     ]
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig
