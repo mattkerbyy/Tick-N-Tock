@@ -32,6 +32,8 @@ const nextConfig = {
               '*.vercel.com vercel.com ' +
               'cdn.vercel-insights.com ' +
               'va.vercel-scripts.com ' +
+              'tick-n-tock.vercel.app ' +
+              'https://cdn.jsdelivr.net ' +
               "'unsafe-eval' " +
               '; ' +
               "style-src 'self' 'unsafe-inline' " +
@@ -48,10 +50,12 @@ const nextConfig = {
               '*.vercel.com vercel.com ' +
               'cdn.vercel-insights.com ' +
               'va.vercel-scripts.com ' +
+              'tick-n-tock.vercel.app ' +
               '*.google-analytics.com *.analytics.google.com ' +
               '*.googletagmanager.com ' +
               'https: wss: ' +
               '; ' +
+              "script-src-attr 'unsafe-inline'; " +
               "frame-src 'self' " +
               '*.vercel.com vercel.com ' +
               '*.google.com ' +
@@ -65,8 +69,7 @@ const nextConfig = {
               "form-action 'self'; " +
               "frame-ancestors 'self'; " +
               "base-uri 'self'; " +
-              'upgrade-insecure-requests; ' +
-              'report-uri https://tick-n-tock.vercel.app/api/csp-report',
+              'upgrade-insecure-requests',
           },
         ],
       },
