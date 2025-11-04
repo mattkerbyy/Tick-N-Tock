@@ -32,7 +32,7 @@ const MoonIcon = () => (
 )
 
 export default function ThemeToggle() {
-  const { theme, setTheme, systemTheme } = useTheme()
+  const { theme, setTheme, systemTheme, resolvedTheme } = useTheme()
   const { playSound } = useGameSounds()
   const [mounted, setMounted] = React.useState(false)
 
@@ -46,7 +46,9 @@ export default function ThemeToggle() {
     )
   }
 
-  const current = theme === 'system' ? systemTheme : theme
+  // Priority 1: Use resolvedTheme (Which respects device theme via enableSystem in ThemeProvider)
+  // Priority 2: Fall back to light theme if nothing is detected
+  const current = resolvedTheme || 'light'
   const isDark = current === 'dark'
   const next = isDark ? 'light' : 'dark'
 
