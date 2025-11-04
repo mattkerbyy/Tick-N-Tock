@@ -38,7 +38,13 @@ export default function ThemeToggle() {
 
   React.useEffect(() => {
     setMounted(true)
-  }, [])
+
+    // Ensure system theme is detected on first mount if no preference is stored
+    if (!localStorage.getItem('theme-preference')) {
+      // Let next-themes detect and apply system theme
+      setTheme('system')
+    }
+  }, [setTheme])
 
   if (!mounted) {
     return (
@@ -48,7 +54,7 @@ export default function ThemeToggle() {
 
   // Priority 1: Use resolvedTheme (Which respects device theme via enableSystem in ThemeProvider)
   // Priority 2: Fall back to light theme if nothing is detected
-  const current = resolvedTheme || 'light'
+  const current = resolvedTheme || systemTheme || 'light'
   const isDark = current === 'dark'
   const next = isDark ? 'light' : 'dark'
 

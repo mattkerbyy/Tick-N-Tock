@@ -5,10 +5,11 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="light"
+      defaultTheme="system"
       enableSystem
-      storageKey="theme-preference"
+      enableColorScheme={false}
       disableTransitionOnChange
+      forcedTheme={undefined}
     >
       {children}
     </ThemeProvider>
