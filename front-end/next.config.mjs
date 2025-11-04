@@ -5,7 +5,7 @@ const nextConfig = {
     typedRoutes: true,
     optimizeCss: true,
   },
-  // Basic security headers to improve safety and help with SEO/opt-in
+  // Security headers to improve safety and help with SEO/opt-in
   async headers() {
     return [
       {
@@ -26,51 +26,22 @@ const nextConfig = {
           { key: 'X-DNS-Prefetch-Control', value: 'on' },
           {
             key: 'Content-Security-Policy',
-            value:
-              "default-src 'self'; " +
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' " +
-              'blob: ' +
-              '*.vercel.com vercel.com ' +
-              'cdn.vercel-insights.com ' +
-              'va.vercel-scripts.com ' +
-              'tick-n-tock.vercel.app ' +
-              'https://cdn.jsdelivr.net ' +
-              '; ' +
-              "style-src 'self' 'unsafe-inline' " +
-              'fonts.googleapis.com ' +
-              '; ' +
-              "font-src 'self' " +
-              'fonts.gstatic.com ' +
-              'data: ' +
-              '; ' +
-              "img-src 'self' data: https: " +
-              '*.vercel.com ' +
-              '; ' +
-              "connect-src 'self' " +
-              'blob: ' +
-              '*.vercel.com vercel.com ' +
-              'cdn.vercel-insights.com ' +
-              'va.vercel-scripts.com ' +
-              'tick-n-tock.vercel.app ' +
-              '*.google-analytics.com *.analytics.google.com ' +
-              '*.googletagmanager.com ' +
-              'https: wss: ' +
-              '; ' +
-              "script-src-attr 'unsafe-inline'; " +
-              "frame-src 'self' " +
-              '*.vercel.com vercel.com ' +
-              '*.google.com ' +
-              '*.googletagmanager.com ' +
-              '; ' +
-              "object-src 'none'; " +
-              "media-src 'self'; " +
-              "manifest-src 'self'; " +
-              "worker-src 'self' blob:; " +
-              "child-src 'self'; " +
-              "form-action 'self'; " +
-              "frame-ancestors 'self'; " +
-              "base-uri 'self'; " +
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.vercel-insights.com va.vercel-scripts.com www.google-analytics.com www.googletagmanager.com google.com",
+              "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
+              "font-src 'self' fonts.gstatic.com fonts.googleapis.com data:",
+              "img-src 'self' data: https: blob: cdn.vercel-insights.com va.vercel-scripts.com www.google-analytics.com www.googletagmanager.com www.gstatic.com csi.gstatic.com",
+              "media-src 'self' data:",
+              "connect-src 'self' cdn.vercel-insights.com vitals.vercel-insights.com va.vercel-scripts.com www.google-analytics.com www.googletagmanager.com https://tick-n-tock.vercel.app wss:",
+              "frame-src 'self' google.com www.google.com",
+              "frame-ancestors 'self'",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
               'upgrade-insecure-requests',
+              'block-all-mixed-content',
+            ].join('; '),
           },
         ],
       },
