@@ -29,12 +29,12 @@ const nextConfig = {
             value:
               "default-src 'self'; " +
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' " +
+              'blob: ' +
               '*.vercel.com vercel.com ' +
               'cdn.vercel-insights.com ' +
               'va.vercel-scripts.com ' +
               'tick-n-tock.vercel.app ' +
               'https://cdn.jsdelivr.net ' +
-              "'unsafe-eval' " +
               '; ' +
               "style-src 'self' 'unsafe-inline' " +
               'fonts.googleapis.com ' +
@@ -47,6 +47,7 @@ const nextConfig = {
               '*.vercel.com ' +
               '; ' +
               "connect-src 'self' " +
+              'blob: ' +
               '*.vercel.com vercel.com ' +
               'cdn.vercel-insights.com ' +
               'va.vercel-scripts.com ' +
