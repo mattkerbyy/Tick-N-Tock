@@ -8,8 +8,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
       defaultTheme="system"
       enableSystem
       enableColorScheme={false}
+      storageKey="theme"
       disableTransitionOnChange
-      forcedTheme={undefined}
     >
       {children}
     </ThemeProvider>

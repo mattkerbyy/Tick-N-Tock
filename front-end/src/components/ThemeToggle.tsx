@@ -38,13 +38,7 @@ export default function ThemeToggle() {
 
   React.useEffect(() => {
     setMounted(true)
-
-    // Ensure system theme is detected on first mount if no preference is stored
-    if (!localStorage.getItem('theme-preference')) {
-      // Let next-themes detect and apply system theme
-      setTheme('system')
-    }
-  }, [setTheme])
+  }, [])
 
   if (!mounted) {
     return (
@@ -52,20 +46,28 @@ export default function ThemeToggle() {
     )
   }
 
-  // Priority 1: Use resolvedTheme (Which respects device theme via enableSystem in ThemeProvider)
-  // Priority 2: Fall back to light theme if nothing is detected
-  const current = resolvedTheme || systemTheme || 'light'
+  // Priority 1: Check if user has previously set a preference in localStorage
+  // Priority 2: Detect system/device theme preference
+  // Priority 3: Fall back to light theme if nothing is detected
+  const current =
+    theme && theme !== 'system'
+      ? theme
+      : resolvedTheme || systemTheme || 'light'
   const isDark = current === 'dark'
   const next = isDark ? 'light' : 'dark'
+
+  const handleToggle = () => {
+    // Play sound based on what theme we're switching to
+    playSound(next === 'light' ? 'theme-toggle-day' : 'theme-toggle-night')
+
+    // setTheme automatically handles localStorage via next-themes with storageKey
+    setTheme(next)
+  }
 
   return (
     <motion.button
       type="button"
-      onClick={() => {
-        // Play sound based on what theme we're switching to
-        playSound(next === 'light' ? 'theme-toggle-day' : 'theme-toggle-night')
-        setTheme(next)
-      }}
+      onClick={handleToggle}
       aria-label={`Switch to ${next} mode`}
       className="relative w-10 h-10 rounded-full border-2 border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 transition-all duration-300 flex items-center justify-center group"
       whileHover={{ scale: 1.05 }}
